@@ -1,7 +1,10 @@
-filebeat.inputs:- type: log
+filebeat.inputs:
+- type: filestream
+  id: my-filestream-id
   paths:
-  - /var/log/*log
-  enabled: true
+    - /var/log/messages
+    - /var/log/*.log
 
 output.logstash:
-  hosts: ["cmjs:5044"]
+  hosts: ["some_host:5044"]
+
